@@ -97,13 +97,23 @@
     </section>
 
     <section id="contact" class="container py-5">
-        <div class="card text-center">
-            <div class="card-body">
-                <h2>Contact Us</h2>
-                <p>Email: <a href="mailto:projectsofjoshi@gmail.com">projectsofjoshi@gmail.com</a></p>
-            </div>
+    <div class="card text-center">
+        <div class="card-body">
+            <h2>Contact Us</h2>
+            <form id="whatsappForm" onsubmit="sendMessage(event)">
+                <div class="form-group">
+                    <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="message" class="form-control" placeholder="Your Message" required>
+                </div>
+                <button type="submit" class="btn btn-success">Send via WhatsApp</button>
+            </form>
+            <p class="mt-3">Or email us: <a href="mailto:projectsofjoshi@gmail.com">projectsofjoshi@gmail.com</a></p>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <section id="team" class="container py-5 text-center">
         <h2>Our Team</h2>
@@ -130,5 +140,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="scripts.js"></script>
+
+
+<script>
+    function sendMessage(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        const message = document.getElementById("message").value;
+
+        const whatsappNumber = "918793678452"; // Replace with your WhatsApp number (with country code, no +)
+        const url = `https://wa.me/${whatsappNumber}?text=Hello, I am ${encodeURIComponent(name)}. ${encodeURIComponent(message)}`;
+
+        window.open(url, '_blank');
+    }
+</script>
+
 </body>
 </html>
